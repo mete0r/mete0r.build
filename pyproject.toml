@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mete0r.build"
+dynamic = [
+	"version",
+	"dependencies",
+]
+
+[project.entry-points."setuptools.finalize_distribution_options"]
+compile_catalog = "mete0r_build:install"
+
+[tool.setuptools]
+py-modules = [
+	"mete0r_build",
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "mete0r_build.__version__"}
+dependencies = {file="requirements.in"}
